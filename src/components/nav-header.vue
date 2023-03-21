@@ -70,7 +70,7 @@
               </template>
               <template #default>
                 <div class="user-card">
-                  <div class="user-info">
+                  <div class="user-info" @click="handleDropwnList('user')">
                     <img :src="userInfo.avatar" alt="" />
                     <span>{{ userInfo.userName }}</span>
                   </div>

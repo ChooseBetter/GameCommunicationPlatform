@@ -264,7 +264,7 @@ defineExpose({
       border-bottom: 1px solid @borderColor;
       background-color: #fff;
       &:hover {
-        background-color: #f4f4f5;
+        background-color: #ecf5ff;
       }
       .content-wrapper {
         display: flex;

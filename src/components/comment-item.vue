@@ -10,7 +10,8 @@
                 {{ liData.userInfo?.userName }}
               </template>
               <template #default>
-                <userInfo-card :userInfo="liData.userInfo"> </userInfo-card>
+                <userInfo-card :otherUserInfo="liData.userInfo">
+                </userInfo-card>
               </template>
             </el-popover>
           </div>
@@ -22,7 +23,7 @@
                   {{ liData.beRepliedInfo?.userName }}
                 </template>
                 <template #default>
-                  <userInfo-card :userInfo="liData.beRepliedInfo">
+                  <userInfo-card :otherUserInfo="liData.beRepliedInfo">
                   </userInfo-card>
                 </template>
               </el-popover>
@@ -104,7 +105,6 @@ import {storeToRefs} from "pinia";
 import {userStore} from "@/store/user";
 import {articleOrThemeStore} from "@/store/articleOrTheme";
 import {useRouter, useRoute} from "vue-router";
-import Utils from "@/utils";
 
 const route = useRoute();
 const router = useRouter();
@@ -283,7 +283,7 @@ const handleComment = async (
       background-color: #f6f6f8;
       border-radius: 15px;
       box-sizing: border-box;
-      border: 1px solid #f6f6f8;
+      border: 1px solid #8a919f;
       &.is-focus {
         border: 1px solid #8a919f !important;
       }

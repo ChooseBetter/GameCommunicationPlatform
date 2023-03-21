@@ -62,7 +62,7 @@ import {ref, computed, onBeforeMount} from "vue";
 import {storeToRefs} from "pinia";
 import {userStore} from "@/store/user";
 import {commonStore} from "@/store/common";
-import {reqAttention} from "@/service/search";
+import {reqAttention} from "@/service/user";
 import {navListType} from "@/store/type";
 import Utils from "@/utils";
 

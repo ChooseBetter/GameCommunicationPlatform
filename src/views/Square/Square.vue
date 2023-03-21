@@ -1,6 +1,6 @@
 <template>
   <div id="club">
-    <div class="content-container">
+    <div class="content-container" @click="commentContainerRef.handleblur">
       <div class="header">
         <div class="club-info-container">
           <img :src="squareInfo.avatar" alt="" />
@@ -87,17 +87,9 @@
     >
       <template #detail="{blockData}">
         <ul class="detail">
-          <li>
-            <span class="label">话题数</span>
-            <span class="number">{{ squareInfo.themeCount }}</span>
-          </li>
-          <li>
-            <span class="label">点赞数</span>
-            <span class="number">{{ squareInfo.likeCount }}</span>
-          </li>
-          <li>
-            <span class="label">评论数</span>
-            <span class="number">{{ squareInfo.commentCount }}</span>
+          <li v-for="item in blockData" :key="item">
+            <span class="label">{{ item.label }}</span>
+            <span class="number">{{ item.count }}</span>
           </li>
         </ul>
       </template>
@@ -143,7 +135,21 @@ onBeforeMount(async () => {
 });
 
 watch(squareInfo, () => {
-  listData.value.push("11111", squareInfo.value.announcement);
+  let detail = [
+    {
+      label: "话题数",
+      count: squareInfo.value.themeCount,
+    },
+    {
+      label: "点赞数",
+      count: squareInfo.value.likeCount,
+    },
+    {
+      label: "评论数",
+      count: squareInfo.value.commentCount,
+    },
+  ];
+  listData.value.push(detail, squareInfo.value.announcement);
 });
 
 // 展示dialog的操作
@@ -236,6 +242,11 @@ const handleClose = () => {
       li {
         margin-bottom: 10px;
         background-color: #fff;
+        &:hover {
+          .base {
+            background-color: #fbfbfb;
+          }
+        }
         .base {
           padding: 20px 20px 0 20px;
           border-bottom: 1px solid #e9e9eb;

@@ -70,7 +70,7 @@
         ></comment-container>
       </div>
       <div class="sidebar">
-        <userInfo-card :userInfo="articleInfo.authorInfo"></userInfo-card>
+        <userInfo-card :otherUserInfo="articleInfo.authorInfo"></userInfo-card>
       </div>
     </div>
     <el-backtop :visibility-height="100" :bottom="50" />
@@ -127,6 +127,7 @@ const gotoComment = () => {
     .getElementById("comment-container")
     ?.scrollIntoView({behavior: "smooth"});
 };
+
 onUnmounted(() => {
   store.updateStateData("articleInfo", {});
   store.updateStateData("commentList", []);

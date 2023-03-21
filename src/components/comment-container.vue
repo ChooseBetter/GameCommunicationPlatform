@@ -155,6 +155,7 @@ const handleblur = () => {
 defineExpose({
   getCommentList,
   queryInfo,
+  handleblur,
 });
 </script>
 

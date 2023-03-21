@@ -25,7 +25,18 @@
         :sidebarConfig="sidebarConfig"
         :listData="listData"
         @handleSidebarItemClick="handleSidebarItemClick"
-      ></aside-sidebar>
+      >
+        <template #advertisement="{blockData}">
+          <img :src="blockData" alt="" />
+        </template>
+        <template #link="{blockData}">
+          <div class="link-countainer">
+            <a v-for="item in blockData" :key="item" :href="item.url">
+              {{ item.label }}
+            </a>
+          </div>
+        </template>
+      </aside-sidebar>
     </div>
     <el-backtop :visibility-height="100" :bottom="50" />
   </div>
@@ -50,6 +61,14 @@ const navList = ref([{label: "综合", value: "0", type: "0"}]);
 const curNav = ref({label: "综合", value: "0", type: "0"});
 // 侧边栏展示的数据
 const listData = ref<any>([]);
+const linkList = [
+  {label: "英雄联盟", url: "https://lol.qq.com/main.shtml"},
+  {label: "王者荣耀", url: "https://pvp.qq.com/"},
+  {label: "原神", url: "https://ys.mihoyo.com/"},
+  {label: "绝地求生", url: "https://pubg.qq.com/"},
+  {label: "崩坏三", url: "https://www.bh3.com/"},
+  {label: "我的世界", url: "https://mc.163.com/index.html"},
+];
 
 onBeforeMount(() => {
   updateStateData("entryList", []);
@@ -63,6 +82,9 @@ watch(categoryList, (newVlue: any) => {
 });
 watch(squareList, (newVlue: any) => {
   listData.value.push(newVlue);
+  listData.value.push("/src/assets/images/pubg.png");
+  listData.value.push("/src/assets/images/minecraft.png");
+  listData.value.push(linkList);
 });
 // 轮播图数据
 const swiperList = reactive([
@@ -127,6 +149,28 @@ const handleSidebarItemClick = (item: any) => {
       }
       div {
         width: 100%;
+      }
+    }
+    .aside-sidebar {
+      img {
+        width: 100%;
+        opacity: 0.7;
+      }
+      .link-countainer {
+        height: 180px;
+        a {
+          display: inline-block;
+          margin: 5px 5px 5px 15px;
+          padding: 10px;
+          color: #858585;
+          text-decoration: none;
+          text-align: center;
+          border-radius: 5px;
+          border: 1px solid @borderColor;
+          &:hover {
+            background-color: #ecf5ff;
+          }
+        }
       }
     }
   }

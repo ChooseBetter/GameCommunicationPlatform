@@ -6,6 +6,10 @@ export function reqUserEntireInfo(url: string) {
   return httpRequest.get<IDataType>(url);
 }
 
+export const reqAttention = (url: string, data: any) => {
+  return httpRequest.post<IDataType>(url, data);
+};
+
 export function reqIncreaseExperience(
   url: string,
   data: {_id: string; expNumber: number}

@@ -3,12 +3,12 @@
     <slot name="aside">
       <template v-for="(block, index) in sidebarConfig" :key="index">
         <block
-          v-if="list"
-          :blockData="list[index]"
+          v-if="listData"
+          :blockData="listData[index]"
           :blockConfig="block"
           @handleItemClick="handleItemClick"
         >
-          <template #[block.key]="{blockData}">
+          <template #[`${block.key}`]="{blockData}">
             <slot :name="block.key" :blockData="blockData"></slot>
           </template>
         </block>
@@ -35,10 +35,10 @@ const handleItemClick = (item: any) => {
   emits("handleSidebarItemClick", item);
 };
 
-const list = ref<any>([]);
+const listData = ref<any>([]);
 watch(props.listData, () => {
   console.log(props.listData);
-  list.value = props.listData;
+  listData.value = props.listData;
 });
 </script>
 <style scoped></style>

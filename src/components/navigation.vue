@@ -71,6 +71,9 @@ const handleItemClick = (item: any) => {
       height: 40px;
     }
   }
+  :deep(.is-active) {
+    background-color: #ecf5ff;
+  }
 }
 .el-menu--vertical {
   max-height: 400px;

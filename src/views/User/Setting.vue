@@ -21,7 +21,7 @@
           </template>
         </navigation>
       </div>
-      <router-view v-slot="{Component}">
+      <router-view v-slot="{Component}" style="height: 500px">
         <keep-alive>
           <component
             :is="Component"

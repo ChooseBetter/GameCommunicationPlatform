@@ -82,7 +82,7 @@ const handleItemClick = (item: any) => {
     padding: 10px 0;
     .content-item {
       &:hover {
-        background-color: #f4f4f5;
+        background-color: #ecf5ff;
       }
       .item {
         display: flex;
